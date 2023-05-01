@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learnify</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="code.js"></script>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <title>Livtu</title>
 </head>
-<body>
-    
+<body style="margin: 0;">
+    <header class="head">
+        <div class="logo header">
+        <a href="index.html" id="image" title="go to the homepage"><img src="img/logo.png" alt="Learnify" height="100px" width="auto"></a>
+        </div>
+        <div class="available_tutors" >
+            <img src="img/icon.png" alt="">
+            Tutors available
+        </div>
+        <div class="find" style="align-content: center; display: flex;">
+            <button onclick="buttonfindclick()" id="findbutton" class="buttonbar">
+                <div style="color: transparent; outline: none; background-color: transparent; border: 0; padding: 0; padding-right: 10px;">
+                    <span class="left arrow arrow0"></span>
+                    <span class="right arrow arrow0"></span>
+                </div>
+                Find Tutors
+            </button>
+        </div>
+        <div class="teach" style="align-content: center;">
+            <button onclick="buttonteachclick()" id="teachbutton" class="buttonbar">
+                <div style="color: transparent; outline: none; background-color: transparent; border: 0; padding: 0; padding-right: 10px;">
+                    <span class="left arrow arrow1"></span>
+                    <span class="right arrow arrow1"></span>
+                </div>
+                Become a Tutor
+            </button>
+        </div>
+        <div class="menu" style="padding-right: 10px; vertical-align: middle; display: flex;">
+            <button onclick="menuclick()" class="menubutton" id="menu">
+                <span class="point-1 point"></span>
+                <span class="point-2 point"></span>
+                <span class="point-3 point"></span>
+            </button>
+        </div>
+    </header>
 </body>
 </html>
