@@ -48,6 +48,7 @@
     padding-right: 5px;
     display: flex;
     cursor: pointer;
+    align-items: center;
 }
 
 .menubutton {
