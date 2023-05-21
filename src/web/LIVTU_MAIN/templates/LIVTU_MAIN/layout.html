@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{%static 'LIVTU_MAIN/style.css'%}">
+    <script src="{%static 'LIVTU_MAIN/code.js'%}"></script>
+    <link rel="shortcut icon" href="{%static 'LIVTU_MAIN/img/logo.png'%}" type="image/x-icon">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body style="margin: 0;">
+    <header class="head">
+        <div class="logo header">
+        <a href="{% url 'home' %}" id="image" title="go to the homepage"><img src="{%static 'LIVTU_MAIN/img/logo.png'%}" alt="Learnify" height="100px" width="auto"></a>
+        </div>
+        <div class="available_tutors buttonbar" style="cursor: default;">
+            <img src="{%static 'LIVTU_MAIN/img/icon.svg'%}" alt="tutors" height="10" width="auto" class="headericon" >
+            <h3>Tutors available</h3>
+        </div>
+        <div class="find" style="align-content: center; display: flex;">
+            <button onclick="buttonfindclick()" id="findbutton" class="buttonbar">
+                <div class="headericon">
+                    <span class="left arrow arrow0"></span>
+                    <span class="right arrow arrow0"></span>
+                </div>
+                <h3>Find Tutors</h3>
+            </button>
+        </div>
+        <div class="teach" style="align-content: center;">
+            <button onclick="buttonteachclick()" id="teachbutton" class="buttonbar">
+                <div class="headericon">
+                    <span class="left arrow arrow1"></span>
+                    <span class="right arrow arrow1"></span>
+                </div>
+                <h3>Become a Tutor</h3>
+            </button>
+        </div>
+        <div class="menu" style="padding-right: 10px; vertical-align: middle; display: flex;">
+            <button onclick="menuclick()" class="menubutton" id="menu">
+                <span class="point-1 point"></span>
+                <span class="point-2 point"></span>
+                <span class="point-3 point"></span>
+            </button>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <footer class="foot">
+        <div class="footer_vertical" style="align-items: center; display: initial; position: sticky; bottom: 0; z-index: 900; width: 100%;">
+            <div class="footer_horizontal" style="width: 100%; display: flex; align-items: center; justify-content: space-around; padding: 0;">
+                <div class="products footer">
+                    <h4>Products and Services</h4>
+                    <br>
+                    <p>
+                        <a href="{% url 'study' %}" class="pointlink footerlink">find teacher</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'teach' %}" class="pointlink footerlink">help others</a>
+                    </p>
+                </div>
+                <div class="legal footer">
+                    <h4>Legal</h4>
+                    <br>
+                    <p>
+                        <a href="{% url 'terms_and_conditions' %}" class="pointlink footerlink">Terms of use</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'privacy' %}" class="pointlink footerlink">Privacy</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'contact' %}" class="pointlink footerlink">contact</a>
+                    </p>
+                </div>
+                <div class="customer_support footer">
+                    <h4>Support</h4>
+                    <br>
+                    <p>
+                        <a href="{% url 'contact' %}" class="pointlink footerlink">Contact us</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'support' %}" class="pointlink footerlink">Contact staff</a>
+                    </p>
+                </div>
+                <div class="company footer">
+                    <h4>Company</h4>
+                    <br>
+                    <p>
+                        <a href="{% url 'about' %}" class="pointlink footerlink">About</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'jobs' %}" class="pointlink footerlink">Work with us</a>
+                    </p>
+                </div>
+            </div>
+            <div class="bottombar" style="width: 100%; display: flex; align-items: center; justify-content: space-around; padding: 0;">
+                <div class="language">
+                    <img src="{%static 'LIVTU_MAIN/img/language.svg'%}" alt="language" height="40px" width="auto">
+                </div>
+                <div class="social_media">
+                    <!--social media links-->
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
