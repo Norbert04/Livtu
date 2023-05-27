@@ -82,7 +82,7 @@ def postReset(request):
 	try:
 		authe.send_password_reset_email(email)
 		message = "Reset link sent"
-		return render(request, "LIVTU_MAIN/Reset.html", {"msg":message})
+		return render(request, "LIVTU_MAIN/home.html", {"msg":message})
 	except:
 		message = "Could not find Email"
 		return render(request, "LIVTU_MAIN/Reset.html", {"msg":message})
