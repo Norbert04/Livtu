@@ -1,6 +1,13 @@
 from django.shortcuts import render
-
 from django.http import HttpResponse
+import pyrebase
+
+with open("LIVTU_MAIN/firebase.py", 'r') as file:
+    exec(file.read())
+
+firebase=pyrebase.initialize_app(config)
+authe = firebase.auth()
+database=firebase.database()
 
 def home(request):
     return render(request, "LIVTU_MAIN/home.html")
@@ -28,3 +35,54 @@ def support(request):
 
 def jobs(request):
     return render(request, "LIVTU_MAIN/jobs.html")
+
+def signIn(request):
+    return render(request,"LIVTU_MAIN/Login.html")
+ 
+def postsignIn(request):
+    email=request.POST.get('email')
+    pasw=request.POST.get('pass')
+    try:
+        user=authe.sign_in_with_email_and_password(email,pasw)
+    except:
+        message="Wrong EMail or Password"
+        return render(request,"LIVTU_MAIN/Login.html",{"msg":message})
+    session_id=user['idToken']
+    request.session['uid']=str(session_id)
+    return render(request,"LIVTU_MAIN/home.html",{"email":email})
+ 
+def logout(request):
+    try:
+        del request.session['uid']
+    except:
+        pass
+    return render(request,"LIVTU_MAIN/Login.html")
+ 
+def signUp(request):
+    return render(request,"LIVTU_MAIN/Registration.html")
+ 
+def postsignUp(request):
+    email = request.POST.get('email')
+    password = request.POST.get('pass')
+    name = request.POST.get('name')
+    try:
+       user=authe.create_user_with_email_and_password(email,password)
+       uid = user['localId']
+       idtoken = request.session['uid']
+       print(uid)
+    except:
+       return render(request, "LIVTU_MAIN/Registration.html")
+    return render(request,"LIVTU_MAIN/Login.html")
+
+def reset(request):
+	return render(request, "LIVTU_MAIN/Reset.html")
+
+def postReset(request):
+	email = request.POST.get('email')
+	try:
+		authe.send_password_reset_email(email)
+		message = "Reset link sent"
+		return render(request, "LIVTU_MAIN/Reset.html", {"msg":message})
+	except:
+		message = "Could not find Email"
+		return render(request, "LIVTU_MAIN/Reset.html", {"msg":message})

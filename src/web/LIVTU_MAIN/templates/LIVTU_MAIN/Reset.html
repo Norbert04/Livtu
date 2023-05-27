@@ -1,0 +1,14 @@
+{% extends "LIVTU_MAIN/layout.html" %}
+{% block title %}
+Reset Password
+{% endblock %}
+{% block content %}
+<div>
+    <h1>Reset Your Password</h1><br>
+    <form action="/postReset/" method="POST">
+        {% csrf_token %}
+        <input type="email" name="email" id="email" placeholder="Enter Your email" required><br><br>
+        <input type="submit" value="Send Reset Link">
+    </form>
+</div>
+{% endblock %}

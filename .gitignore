@@ -8,3 +8,7 @@ media
 venv/
 ENV/
 *.venv
+firebase.py
+node_modules
+package.json
+package-lock.json

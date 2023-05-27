@@ -5,5 +5,9 @@ Livtu
 {% block content %}
 <div>
     <p>TEST</p>
+    <button type="button" onclick="location.href='{% url 'logout' %}' " style="background-color: rgba(7, 179, 185, 0.753); color: white; width: 70px; height: 40px; border: none; border-radius: 5px;">Logout</button>
 </div>
+<br/>
+<br/>
+<a href="{% url 'signup' %}">Register</a>
 {% endblock %}

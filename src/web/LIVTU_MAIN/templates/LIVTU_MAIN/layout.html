@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {%if msg%}
+    <script>
+        window.alert('{{msg}}');
+    </script>
+    {% endif%}
     <link rel="stylesheet" type="text/css" href="{%static 'LIVTU_MAIN/style.css'%}">
     <script src="{%static 'LIVTU_MAIN/code.js'%}"></script>
     <link rel="shortcut icon" href="{%static 'LIVTU_MAIN/img/logo.png'%}" type="image/x-icon">
     <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body style="margin: 0;">
     <header class="head">
         <div class="logo header">
-        <a href="{% url 'home' %}" id="image" title="go to the homepage"><img src="{%static 'LIVTU_MAIN/img/logo.png'%}" alt="Learnify" height="100px" width="auto"></a>
+            <a href="{% url 'home' %}" id="image" title="go to the homepage">
+                <img src="{%static 'LIVTU_MAIN/img/logo.png'%}" alt="Learnify" height="100px" width="auto">
+            </a>
         </div>
         <div class="available_tutors buttonbar" style="cursor: default;">
-            <img src="{%static 'LIVTU_MAIN/img/icon.svg'%}" alt="tutors" height="10" width="auto" class="headericon" >
+            <img src="{%static 'LIVTU_MAIN/img/icon.svg'%}" alt="tutors" height="25" width="auto" class="headericon">
             <h3>Tutors available</h3>
         </div>
         <div class="find" style="align-content: center; display: flex;">
@@ -37,19 +46,28 @@
                 <h3>Become a Tutor</h3>
             </button>
         </div>
-        <div class="menu" style="padding-right: 10px; vertical-align: middle; display: flex;">
-            <button onclick="menuclick()" class="menubutton" id="menu">
-                <span class="point-1 point"></span>
-                <span class="point-2 point"></span>
-                <span class="point-3 point"></span>
-            </button>
+        <div style="display: flex;">
+            <div class="menu" style="padding-right: 10px; vertical-align: middle; display: flex;">
+                <button onclick="menuclick()" class="menubutton" id="menu">
+                    <span class="point-1 point"></span>
+                    <span class="point-2 point"></span>
+                    <span class="point-3 point"></span>
+                </button>
+            </div>
+            <div class="buttonbar user" style="padding-right: 10px; vertical-align: middle;">
+                <a href="{% url 'login' %}" title="Login">
+                    <img src="{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}" alt="Profile" height="50" width="auto">
+                </a>
+            </div>
         </div>
     </header>
     {% block content %}
     {% endblock %}
     <footer class="foot">
-        <div class="footer_vertical" style="align-items: center; display: initial; position: sticky; bottom: 0; z-index: 900; width: 100%;">
-            <div class="footer_horizontal" style="width: 100%; display: flex; align-items: center; justify-content: space-around; padding: 0;">
+        <div class="footer_vertical"
+            style="align-items: center; display: initial; position: sticky; bottom: 0; z-index: 900; width: 100%;">
+            <div class="footer_horizontal"
+                style="width: 100%; display: flex; align-items: center; justify-content: space-around; padding: 0;">
                 <div class="products footer">
                     <h4>Products and Services</h4>
                     <br>
@@ -94,7 +112,8 @@
                     </p>
                 </div>
             </div>
-            <div class="bottombar" style="width: 100%; display: flex; align-items: center; justify-content: space-around; padding: 0;">
+            <div class="bottombar"
+                style="width: 100%; display: flex; align-items: center; justify-content: space-around; padding: 0;">
                 <div class="language">
                     <img src="{%static 'LIVTU_MAIN/img/language.svg'%}" alt="language" height="40px" width="auto">
                 </div>
@@ -105,4 +124,5 @@
         </div>
     </footer>
 </body>
+
 </html>
