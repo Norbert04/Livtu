@@ -65,14 +65,18 @@ def postsignUp(request):
     email = request.POST.get('email')
     password = request.POST.get('pass')
     name = request.POST.get('name')
-    try:
-       user=authe.create_user_with_email_and_password(email,password)
-       uid = user['localId']
-       idtoken = request.session['uid']
-       print(uid)
-    except:
-       return render(request, "LIVTU_MAIN/Registration.html")
-    return render(request,"LIVTU_MAIN/Login.html")
+    passwordrepeat = request.POST.get('pass-repeat')
+    if(password==passwordrepeat):
+        try:
+            user=authe.create_user_with_email_and_password(email,password)
+            uid = user['localId']
+            idtoken = request.session['uid']
+            print(uid)
+        except:
+            return render(request, "LIVTU_MAIN/Registration.html")
+        return render(request,"LIVTU_MAIN/Login.html")
+    else:
+        return render(request, "LIVTU_MAIN/Registration.html",{"msg":"Passwords not identical. Please try again"})
 
 def reset(request):
 	return render(request, "LIVTU_MAIN/Reset.html")
