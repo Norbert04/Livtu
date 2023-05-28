@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import pyrebase
 
@@ -45,18 +45,18 @@ def postsignIn(request):
     try:
         user=authe.sign_in_with_email_and_password(email,pasw)
     except:
-        message="Wrong EMail or Password"
-        return render(request,"LIVTU_MAIN/Login.html",{"msg":message})
+        message="Wrong Email or Password"
+        return redirect('login',data={"msg":message})
     session_id=user['idToken']
     request.session['uid']=str(session_id)
-    return render(request,"LIVTU_MAIN/home.html",{"email":email})
+    return redirect('home')
  
 def logout(request):
     try:
         del request.session['uid']
     except:
         pass
-    return render(request,"LIVTU_MAIN/Login.html")
+    return redirect('login')
  
 def signUp(request):
     return render(request,"LIVTU_MAIN/Registration.html")
@@ -73,10 +73,10 @@ def postsignUp(request):
             idtoken = request.session['uid']
             print(uid)
         except:
-            return render(request, "LIVTU_MAIN/Registration.html")
-        return render(request,"LIVTU_MAIN/Login.html")
+            return redirect('signup')
+        return redirect('login')
     else:
-        return render(request, "LIVTU_MAIN/Registration.html",{"msg":"Passwords not identical. Please try again"})
+        return redirect('signup',data={"msg":"Passwords not identical. Please try again"})
 
 def reset(request):
 	return render(request, "LIVTU_MAIN/Reset.html")
@@ -86,7 +86,7 @@ def postReset(request):
 	try:
 		authe.send_password_reset_email(email)
 		message = "Reset link sent"
-		return render(request, "LIVTU_MAIN/home.html", {"msg":message})
+		return redirect('home', data={"msg":message})
 	except:
 		message = "Could not find Email"
-		return render(request, "LIVTU_MAIN/Reset.html", {"msg":message})
+		return redirect('reset', data={"msg":message})

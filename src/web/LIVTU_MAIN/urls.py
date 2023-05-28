@@ -3,7 +3,6 @@ from LIVTU_MAIN import views
 
 urlpatterns = [
     path("", views.home, name="home"),
-    path("", views.home, name="home"),
     path("teach/", views.teach, name="teach"),
     path("study/", views.study, name="study"),
     path("legal/terms", views.terms, name="terms_and_conditions"),
