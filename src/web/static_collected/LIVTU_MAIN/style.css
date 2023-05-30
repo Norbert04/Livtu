@@ -124,3 +124,26 @@
 .user {
     align-items: center;
 }
+
+/* Position the parent element relatively */
+.find {
+    position: relative;
+}
+
+/* Position the dropdown content absolutely */
+.findDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+/* Hide the dropdown content by default */
+.findDropdown {
+    display: none;
+}
+
+/* Show the dropdown content when the button is hovered */
+#findbutton:hover + .findDropdown {
+    display: block;
+}

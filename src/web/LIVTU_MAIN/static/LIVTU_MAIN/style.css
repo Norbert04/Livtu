@@ -1,7 +1,7 @@
 .head {
     width: 100%;
     height: 100px;
-    background-color: RGB(120,120,120);
+    background-color: RGB(120, 120, 120);
     padding: 0;
     margin: 0;
     outline: none;
@@ -16,20 +16,20 @@
 .foot {
     width: 100%;
     height: auto;
-    background-color: RGB(140,140,140);
+    background-color: RGB(140, 140, 140);
     padding: 0;
     margin: 0;
     outline: none;
     position: fixed;
     bottom: 0;
-    z-index: 900;
+    z-index: 899;
     align-items: center;
     justify-content: space-between;
     display: flex;
 }
 
 .footer {
-    text-align:center;
+    text-align: center;
     align-content: center;
     vertical-align: top;
     align-self: baseline;
@@ -45,12 +45,14 @@
 
 .arrow.left {
     transform: translateX(-0.6px) translateY(2.9px) rotate(45deg);
-    transition: transform 0.6s cubic-bezier(.2,-0.81,.95,1.62);
+}
+
+.arrow {
+    transition: transform 0.3s cubic-bezier(.2, -0.81, .95, 1.62);
 }
 
 .arrow.right {
     transform: translateX(3px) rotate(-45deg);
-    transition: transform 0.6s cubic-bezier(.2,-0.81,.95,1.62);
 }
 
 .arrow.left.open {
@@ -89,7 +91,7 @@
     width: 5px;
     height: 5px;
     display: block;
-    transition: transform 0.6s cubic-bezier(.41,-0.76,.73,1.52);
+    transition: transform 0.6s cubic-bezier(.41, -0.76, .73, 1.52);
 }
 
 .point-1.open {
@@ -97,7 +99,7 @@
 }
 
 .point-2.open {
-    transform: translate(10px,10px) rotate(45deg);
+    transform: translate(10px, 10px) rotate(45deg);
 }
 
 .point-3.open {
@@ -106,9 +108,10 @@
 
 .headericon {
     color: transparent;
-    outline: none; 
-    background-color: transparent; 
-    border: 0; padding: 0; 
+    outline: none;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
     padding-right: 15px;
 }
 
@@ -123,4 +126,60 @@
 
 .user {
     align-items: center;
+}
+
+.find {
+    position: relative;
+}
+
+.findDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+#findbutton:hover .arrow.left {
+    transform: translateX(-0.6px) translateY(2.9px) rotate(-45deg);
+}
+
+#findbutton:hover .arrow.right {
+    transform: translateX(3px) rotate(45deg);
+}
+
+#findbutton:hover+.findDropdown {
+    display: block;
+}
+
+.teach {
+    position: relative;
+}
+
+.teachDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+#teachbutton:hover .arrow.left {
+    transform: translateX(-0.6px) translateY(2.9px) rotate(-45deg);
+}
+
+#teachbutton:hover .arrow.right {
+    transform: translateX(3px) rotate(45deg);
+}
+
+#teachbutton:hover+.teachDropdown {
+    display: block;
+}
+
+.teachDropdown.open {
+    display: block;
+}
+
+.findDropdown.open {
+    display: block;
 }
