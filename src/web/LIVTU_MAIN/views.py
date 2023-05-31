@@ -10,11 +10,7 @@ authe = firebase.auth()
 database=firebase.database()
 
 def home(request):
-    try:
-        request.session['uid']
-        return render(request, "LIVTU_MAIN/home.html", {"userLoggedIn": True})
-    except:
-        return render(request, "LIVTU_MAIN/home.html", {"userLoggedIn": False})
+    return render(request, "LIVTU_MAIN/home.html")
 
 def about(request):
     return render(request, "LIVTU_MAIN/about.html")
@@ -94,3 +90,10 @@ def postReset(request):
 	except:
 		message = "Could not find Email"
 		return redirect('reset', data={"msg":message})
+
+def profile(request):
+    try:
+        request.session['uid']
+        return render(request, "LIVTU_MAIN/profile.html")
+    except:
+        return redirect('home')

@@ -72,9 +72,11 @@
                 </a>
                 <div class="userDropdown dropdown">
                     {%if userLoggedIn%}
-                    <a href="{% url 'home' %}">Calendar</a>
+                    <a href="{% url 'calendar' %}">Calendar</a>
+                    <a href="{% url 'profile' %}">Profile</a>
                     {%else%}
                     <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'signup' %}">Register</a>
                     {%endif%}
                 </div>
             </div>

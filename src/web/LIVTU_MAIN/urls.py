@@ -18,4 +18,6 @@ urlpatterns = [
     path('finishRegistration/', views.postsignUp, name="endSignUp"),
     path('Reset/', views.reset, name="reset"),
     path('finishReset/', views.postReset, name="completeReset"),
+    path("", views.home, name="calendar"),
+    path("", views.home, name="profile"),
 ]
