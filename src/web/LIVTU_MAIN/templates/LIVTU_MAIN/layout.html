@@ -36,7 +36,7 @@
                 </div>
                 <h3>Find Tutors</h3>
             </button>
-            <div class="findDropdown findContent">
+            <div class="findDropdown findContent dropdown">
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'home' %}">Home</a>
@@ -51,7 +51,7 @@
                 </div>
                 <h3>Become a Tutor</h3>
             </button>
-            <div class="teachDropdown teachContent">
+            <div class="teachDropdown teachContent dropdown">
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'home' %}">Home</a>
@@ -67,14 +67,23 @@
                 </button>
             </div>
             <div class="buttonbar user" style="padding-right: 10px; vertical-align: middle;">
-                <a href="{% url 'login' %}" title="Login">
+                <a href="{% url 'login' %}" title="Login" id="profileMenu">
                     <img src="{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}" alt="Profile" height="50" width="auto">
                 </a>
+                <div class="userDropdown dropdown">
+                    {%if userLoggedIn%}
+                    <a href="{% url 'home' %}">Calendar</a>
+                    {%else%}
+                    <a href="{% url 'login' %}">Login</a>
+                    {%endif%}
+                </div>
             </div>
         </div>
     </header>
+    <main>
     {% block content %}
     {% endblock %}
+    </main>
     <footer class="foot">
         <div class="footer_vertical"
             style="align-items: center; display: initial; position: sticky; bottom: 0; z-index: 900; width: 100%;">
