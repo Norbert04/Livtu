@@ -19,5 +19,5 @@ urlpatterns = [
     path('Reset/', views.reset, name="reset"),
     path('finishReset/', views.postReset, name="completeReset"),
     path("", views.home, name="calendar"),
-    path("", views.home, name="profile"),
+    path("Profile/", views.changeProfile, name="profile"),
 ]

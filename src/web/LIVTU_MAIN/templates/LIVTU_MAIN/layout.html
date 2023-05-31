@@ -67,9 +67,19 @@
                 </button>
             </div>
             <div class="buttonbar user" style="padding-right: 10px; vertical-align: middle;">
-                <a href="{% url 'login' %}" title="Login" id="profileMenu">
-                    <img src="{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}" alt="Profile" height="50" width="auto">
+                {% if userLoggedIn and profilePictureUrl%}
+                <a href="{% url 'profile' %}" title="Login" id="profileMenu">
+                    <img src="{{ profilePictureUrl }}" alt="Profile" height="70" width="auto">
                 </a>
+                {%elif userLoggedIn%}
+                <a href="{% url 'profile' %}" title="Login" id="profileMenu">
+                    <img src="{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}" alt="Profile" height="70" width="auto">
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" title="Login" id="profileMenu">
+                    <img src="{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}" alt="Profile" height="70" width="auto">
+                </a>
+                {% endif %}
                 <div class="userDropdown dropdown">
                     {%if userLoggedIn%}
                     <a href="{% url 'calendar' %}">Calendar</a>
@@ -83,8 +93,8 @@
         </div>
     </header>
     <main>
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
     <footer class="foot">
         <div class="footer_vertical"

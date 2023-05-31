@@ -1,0 +1,11 @@
+{% extends "LIVTU_MAIN/layout.html" %}
+{% block title %}
+Edit your Profile
+{% endblock %}
+{% block content %}
+<form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload Profile Picture</button>
+</form>
+{% endblock %}

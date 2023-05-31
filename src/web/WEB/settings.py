@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'LIVTU_MAIN.context_processors.userLoggedIn',
+                'LIVTU_MAIN.context_processors.getProfilePictureUrl',
             ],
         },
     },

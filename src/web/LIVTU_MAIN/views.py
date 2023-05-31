@@ -2,12 +2,18 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import pyrebase
 
+from django import forms
+
+class ProfilePicture(forms.Form):
+    profilePicture = forms.ImageField()
+
 with open("LIVTU_MAIN/firebase.py", 'r') as file:
     exec(file.read())
 
 firebase=pyrebase.initialize_app(config)
 authe = firebase.auth()
 database=firebase.database()
+storage = firebase.storage()
 
 def home(request):
     return render(request, "LIVTU_MAIN/home.html")
@@ -47,8 +53,9 @@ def postsignIn(request):
     except:
         message="Wrong Email or Password"
         return redirect('login',data={"msg":message})
+    uid = str(user['localId'])
     session_id=user['idToken']
-    request.session['uid']=str(session_id)
+    request.session['uid']=uid
     return redirect('home')
  
 def logout(request):
@@ -69,7 +76,7 @@ def postsignUp(request):
     if(password==passwordrepeat):
         try:
             user=authe.create_user_with_email_and_password(email,password)
-            uid = user['localId']
+            uid = str(user['localId'])
             idtoken = request.session['uid']
             print(uid)
         except:
@@ -97,3 +104,21 @@ def profile(request):
         return render(request, "LIVTU_MAIN/profile.html")
     except:
         return redirect('home')
+
+def changeProfile(request):
+    if request.method == "POST":
+        form = ProfilePicture(request.POST, request.FILES)
+        if form.is_valid():
+            user_id = request.session.get("uid")
+            if user_id is None:
+                return HttpResponse("User ID not found in session.")
+            image = request.FILES.get("profilePicture")
+            image_path = f"profile_pictures/{user_id}.png"
+            if image:
+                storage.child(image_path).put(image)
+                return HttpResponse("Profile picture uploaded successfully.")
+            else:
+                return HttpResponse("No profile picture uploaded. or no png file")
+    else:
+        form = ProfilePicture()
+    return render(request, "LIVTU_MAIN/ChangeProfile.html", {"form": form})
