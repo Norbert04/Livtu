@@ -10,7 +10,11 @@ authe = firebase.auth()
 database=firebase.database()
 
 def home(request):
-    return render(request, "LIVTU_MAIN/home.html")
+    try:
+        request.session['uid']
+        return render(request, "LIVTU_MAIN/home.html", {"userLoggedIn": True})
+    except:
+        return render(request, "LIVTU_MAIN/home.html", {"userLoggedIn": False})
 
 def about(request):
     return render(request, "LIVTU_MAIN/about.html")
