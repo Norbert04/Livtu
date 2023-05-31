@@ -54,9 +54,9 @@ def postsignIn(request):
 def logout(request):
     try:
         del request.session['uid']
+        return redirect('login')
     except:
-        pass
-    return redirect('login')
+        return redirect('login', data={"msg":"Logout Failed"})
  
 def signUp(request):
     return render(request,"LIVTU_MAIN/Registration.html")
