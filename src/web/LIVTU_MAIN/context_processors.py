@@ -19,3 +19,8 @@ def getProfilePictureUrl(request):
     user_id = request.session.get('uid')
     profilePictureUrl = storage.child(f"profile_pictures/{user_id}.png").get_url(None)
     return {'profilePictureUrl': profilePictureUrl}
+
+def getProfileBackgroundUrl(request):
+    user_id = request.session.get('uid')
+    profileBackgroundUrl = storage.child(f"profile_background/{user_id}.png").get_url(None)
+    return {'profileBackgroundUrl': profileBackgroundUrl}

@@ -5,7 +5,30 @@ Edit your Profile
 {% block content %}
 <form action="{% url 'profileEdit' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload Profile Picture</button>
+    <style>
+        .image-upload>input {
+            display: none;
+        }
+
+        .image-upload label {
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+    <label for="upload" class="label">
+        <div class="image-upload"
+            style="border-radius: 50%; display: flex; justify-content: center; align-items: center; width: 150px; height: 150px; overflow: hidden;">
+            <label for="file-input">
+                <img src="{{ profilePictureUrl }}" alt="Profile Picture" height="150px" width="auto" />
+            </label>
+            <input id="file-input" onchange="form.submit()" type="file" name="profilePicture" accept="image/png"
+                required />
+        </div>
+    </label>
 </form>
+<script>
+    document.querySelector('.image-upload label').addEventListener('click', function () {
+        document.getElementById('file-input').click();
+    });
+</script>
 {% endblock %}

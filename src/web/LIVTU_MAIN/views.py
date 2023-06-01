@@ -1,11 +1,7 @@
+from PIL import Image
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import pyrebase
-
-from django import forms
-
-class ProfilePicture(forms.Form):
-    profilePicture = forms.ImageField()
 
 with open("LIVTU_MAIN/firebase.py", 'r') as file:
     exec(file.read())
@@ -103,22 +99,25 @@ def profile(request):
         request.session['uid']
         return render(request, "LIVTU_MAIN/profile.html")
     except:
-        return redirect('home')
+        return redirect('login')
 
 def changeProfile(request):
-    if request.method == "POST":
-        form = ProfilePicture(request.POST, request.FILES)
-        if form.is_valid():
-            user_id = request.session.get("uid")
-            if user_id is None:
-                return redirect('profileEdit')
+    try:
+        request.session['uid']
+        userLoggedIn = True
+    except:
+        userLoggedIn = False
+    if userLoggedIn:
+        if request.method == "POST":
             image = request.FILES.get("profilePicture")
+            user_id = request.session.get("uid")
             image_path = f"profile_pictures/{user_id}.png"
             if image:
                 storage.child(image_path).put(image)
                 return redirect('profile')
             else:
                 return redirect('profileEdit')
+        else:
+            return render(request, "LIVTU_MAIN/ChangeProfile.html")
     else:
-        form = ProfilePicture()
-    return render(request, "LIVTU_MAIN/ChangeProfile.html", {"form": form})
+        return redirect('login')
