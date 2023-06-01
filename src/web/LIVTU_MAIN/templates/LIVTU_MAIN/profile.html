@@ -12,8 +12,19 @@ Your Profile
         background-color: lightblue;
         overflow: hidden;
     }
+    .profilepic {
+        position: absolute;
+        top: 400px;
+        left: 37.5%;
+        display: block;
+        width: 25%;
+        padding-bottom: 25%;
+        background-color: lightblue;
+        border-radius: 50%;
+        overflow: hidden;
+    }
 </style>
-<div class="profile">
+<div class="profile" style="display: block; background-color: white; height: 100%;">
     <div class="backgroundimg">
         <img src="{{profileBackgroundUrl}}" alt="Background" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/UserBackground.jpg'%}')" width="100%" height="auto">
     </div>

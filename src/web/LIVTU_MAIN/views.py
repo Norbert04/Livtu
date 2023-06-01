@@ -48,7 +48,7 @@ def postsignIn(request):
         user=authe.sign_in_with_email_and_password(email,pasw)
     except:
         message="Wrong Email or Password"
-        return redirect('login',data={"msg":message})
+        return redirect('login',{"msg":message})
     uid = str(user['localId'])
     session_id=user['idToken']
     request.session['uid']=uid
