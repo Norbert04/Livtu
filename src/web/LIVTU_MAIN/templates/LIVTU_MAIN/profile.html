@@ -1,11 +1,21 @@
 {% extends "LIVTU_MAIN/layout.html" %}
+{% load static %}
 {% block title %}
 Your Profile
 {% endblock %}
 {% block content %}
+<style>
+    .backgroundimg {
+        display: block;
+        width: 100%;
+        height: 500px;
+        background-color: lightblue;
+        overflow: hidden;
+    }
+</style>
 <div class="profile">
     <div class="backgroundimg">
-        
+        <img src="{{profileBackgroundUrl}}" alt="Background" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/UserBackground.jpg'%}')" width="100%" height="auto">
     </div>
     <div class="profilepic">
 

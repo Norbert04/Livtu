@@ -1,3 +1,8 @@
+function handleImageError(imageElement, fallbackImageUrl) {
+    imageElement.onerror = null;
+    imageElement.src = fallbackImageUrl;
+}
+
 function buttonfindclick() {
     document.querySelectorAll(".findContent").forEach(function(button){button.classList.toggle("open");});
     document.querySelectorAll(".teachContent.open").forEach(function(button){button.classList.remove("open");});

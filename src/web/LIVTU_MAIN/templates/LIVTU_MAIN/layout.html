@@ -67,13 +67,9 @@
                 </button>
             </div>
             <div class="buttonbar user" style="padding-right: 10px; vertical-align: middle;">
-                {% if userLoggedIn and profilePictureUrl%}
+                {% if userLoggedIn%}
                 <a href="{% url 'profile' %}" title="Login" id="profileMenu">
-                    <img src="{{ profilePictureUrl }}" alt="Profile" height="70" width="auto">
-                </a>
-                {%elif userLoggedIn%}
-                <a href="{% url 'profile' %}" title="Login" id="profileMenu">
-                    <img src="{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}" alt="Profile" height="70" width="auto">
+                    <img src="{{ profilePictureUrl }}" alt="Profile" height="70" width="auto" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}')">
                 </a>
                 {% else %}
                 <a href="{% url 'login' %}" title="Login" id="profileMenu">
@@ -93,7 +89,7 @@
             </div>
         </div>
     </header>
-    <main>
+    <main style="min-height: 700px;">
         {% block content %}
         {% endblock %}
     </main>

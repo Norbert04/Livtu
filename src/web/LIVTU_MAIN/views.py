@@ -97,8 +97,12 @@ def postReset(request):
 def profile(request):
     try:
         request.session['uid']
-        return render(request, "LIVTU_MAIN/profile.html")
+        userLoggedIn = True
     except:
+        userLoggedIn = False
+    if userLoggedIn:
+        return render(request, "LIVTU_MAIN/profile.html")
+    else:
         return redirect('login')
 
 def changeProfile(request):
