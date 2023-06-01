@@ -111,14 +111,14 @@ def changeProfile(request):
         if form.is_valid():
             user_id = request.session.get("uid")
             if user_id is None:
-                return HttpResponse("User ID not found in session.")
+                return redirect('profileEdit')
             image = request.FILES.get("profilePicture")
             image_path = f"profile_pictures/{user_id}.png"
             if image:
                 storage.child(image_path).put(image)
-                return HttpResponse("Profile picture uploaded successfully.")
+                return redirect('profile')
             else:
-                return HttpResponse("No profile picture uploaded. or no png file")
+                return redirect('profileEdit')
     else:
         form = ProfilePicture()
     return render(request, "LIVTU_MAIN/ChangeProfile.html", {"form": form})
