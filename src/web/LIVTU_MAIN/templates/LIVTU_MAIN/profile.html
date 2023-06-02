@@ -13,6 +13,7 @@ Your Profile
         background-color: lightblue;
         overflow: hidden;
     }
+
     .profilepic {
         position: absolute;
         top: 12.5vw;
@@ -24,29 +25,38 @@ Your Profile
         border-radius: 50%;
         overflow: hidden;
     }
+
     .profile {
         position: relative;
     }
 </style>
 <div class="profile" style="display: block; background-color: white; height: 100%; min-height: 200vw;">
     <div class="backgroundimg">
-        <img src="{{profileBackgroundUrl}}" alt="Background" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/UserBackground.jpg'%}')" width="100%" height="auto">
+        <img src="{{profileBackgroundUrl}}" alt="Background"
+            onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/UserBackground.jpg'%}')" width="100%"
+            height="auto">
     </div>
     <div class="profilepic">
-        <img src="{{ profilePictureUrl }}" alt="Profile Picture" width="100%" heigth="auto" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}')"/>
+        <img src="{{ profilePictureUrl }}" alt="Profile Picture" width="100%" heigth="auto"
+            onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}')" />
     </div>
-    <div class="data" style="position: absolute; top: 40vw; left: 50%; transform: translateX(-50%); height: 80px;">
-        <h2 style="font-size: xx-large; font-family: Arial, Helvetica, sans-serif; margin: 5px;"></h2>
-        <p class="mail" style="font-size: small; font-family: Arial, Helvetica, sans-serif; color: rgb(20, 20, 20); margin: 5px;"></p>
+    <div class="data" style="position: absolute; top: 40vw; left: 50%; transform: translateX(-50%); height: 80px; text-align: center;">
+        <h2 style="font-size: xx-large; font-family: Arial, Helvetica, sans-serif; margin: 5px;">Name</h2>
+        <p class="mail"
+            style="font-size: small; font-family: Arial, Helvetica, sans-serif; color: rgb(20, 20, 20); margin: 5px;">
+            Email
+        </p>
     </div>
     <div class="subjects" style="position: absolute; top: calc(40vw + 80px); left: 50%; transform: translateX(-50%);">
-        <button style="cursor: pointer; padding: 0; outline: 0; background-color: transparent; border: 0;">
+        <button style="cursor: pointer; padding: 0; outline: 0; background-color: transparent; border: 0; top: 0; bottom: 0;">
             <span style="background-color: black; width: 20px; height: 2px; display: block;"></span>
-            <span style="background-color: black; width: 20px; height: 2px; display: block; transform: translateY(-2px) rotate(90deg);"></span>
+            <span
+                style="background-color: black; width: 20px; height: 2px; display: block; transform: translateY(-2px) rotate(90deg);"></span>
         </button>
     </div>
-    <div class="description">
-
+    <div class="description"
+        style="border-radius: 10px; border-color: rgb(121, 121, 121); border-width: 5px; border-style: solid; background-color: lightgrey; position: absolute; top: calc(40vw + 120px); height: 20vw; width: 90vw; left: 50%; transform: translateX(-50%); padding: 15px;">
+        <p style="font-size: medium; font-family: Arial, Helvetica, sans-serif; font-size: large;">description</p>
     </div>
     <div class="otherProfileStuff">
 
