@@ -118,7 +118,7 @@ def changeProfile(request):
             image_path = f"profile_pictures/{user_id}.png"
             if image:
                 storage.child(image_path).put(image)
-                return redirect('profile')
+                return redirect('profileEdit')
             else:
                 return redirect('profileEdit')
         else:

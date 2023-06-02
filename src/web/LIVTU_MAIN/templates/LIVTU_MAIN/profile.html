@@ -6,22 +6,26 @@ Your Profile
 {% block content %}
 <style>
     .backgroundimg {
+        position: absolute;
         display: block;
-        width: 100%;
-        height: 500px;
+        width: 100vw;
+        height: 25vw;
         background-color: lightblue;
         overflow: hidden;
     }
     .profilepic {
         position: absolute;
-        top: 400px;
-        left: 37.5%;
+        top: 12.5vw;
+        left: 37.5vw;
         display: block;
-        width: 25%;
-        padding-bottom: 25%;
+        width: 25vw;
+        height: 25vw;
         background-color: lightblue;
         border-radius: 50%;
         overflow: hidden;
+    }
+    .profile {
+        position: relative;
     }
 </style>
 <div class="profile" style="display: block; background-color: white; height: 100%;">
@@ -29,7 +33,7 @@ Your Profile
         <img src="{{profileBackgroundUrl}}" alt="Background" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/UserBackground.jpg'%}')" width="100%" height="auto">
     </div>
     <div class="profilepic">
-
+        <img src="{{ profilePictureUrl }}" alt="Profile Picture" width="100%" heigth="auto" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}')"/>
     </div>
     <div class="data">
 
