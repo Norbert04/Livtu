@@ -28,15 +28,22 @@ Your Profile
         position: relative;
     }
 </style>
-<div class="profile" style="display: block; background-color: white; height: 100%;">
+<div class="profile" style="display: block; background-color: white; height: 100%; min-height: 200vw;">
     <div class="backgroundimg">
         <img src="{{profileBackgroundUrl}}" alt="Background" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/UserBackground.jpg'%}')" width="100%" height="auto">
     </div>
     <div class="profilepic">
         <img src="{{ profilePictureUrl }}" alt="Profile Picture" width="100%" heigth="auto" onerror="handleImageError(this, '{%static 'LIVTU_MAIN/img/USER_ICON.svg'%}')"/>
     </div>
-    <div class="data">
-
+    <div class="data" style="position: absolute; top: 40vw; left: 50%; transform: translateX(-50%); height: 80px;">
+        <h2 style="font-size: xx-large; font-family: Arial, Helvetica, sans-serif; margin: 5px;"></h2>
+        <p class="mail" style="font-size: small; font-family: Arial, Helvetica, sans-serif; color: rgb(20, 20, 20); margin: 5px;"></p>
+    </div>
+    <div class="subjects" style="position: absolute; top: calc(40vw + 80px); left: 50%; transform: translateX(-50%);">
+        <button style="cursor: pointer; padding: 0; outline: 0; background-color: transparent; border: 0;">
+            <span style="background-color: black; width: 20px; height: 2px; display: block;"></span>
+            <span style="background-color: black; width: 20px; height: 2px; display: block; transform: translateY(-2px) rotate(90deg);"></span>
+        </button>
     </div>
     <div class="description">
 

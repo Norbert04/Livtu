@@ -6,6 +6,7 @@ with open("LIVTU_MAIN/firebase.py", 'r') as file:
 firebase=pyrebase.initialize_app(config)
 database=firebase.database()
 storage = firebase.storage()
+auth = firebase.auth()
 
 def userLoggedIn(request):
     try:
@@ -24,3 +25,8 @@ def getProfileBackgroundUrl(request):
     user_id = request.session.get('uid')
     profileBackgroundUrl = storage.child(f"profile_background/{user_id}.png").get_url(None)
     return {'profileBackgroundUrl': profileBackgroundUrl}
+
+"""def getUserEmail(request):
+    user_id = request.session.get('uid')
+    userEmail = auth.get_account_info(user_id)['users']['email']
+    return {'userEmail': userEmail}"""

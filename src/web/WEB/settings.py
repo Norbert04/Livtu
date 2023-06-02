@@ -69,6 +69,7 @@ TEMPLATES = [
                 'LIVTU_MAIN.context_processors.userLoggedIn',
                 'LIVTU_MAIN.context_processors.getProfilePictureUrl',
                 'LIVTU_MAIN.context_processors.getProfileBackgroundUrl',
+#                'LIVTU_MAIN.context_processors.getUserEmail',
             ],
         },
     },
